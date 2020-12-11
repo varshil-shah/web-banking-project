@@ -1,63 +1,90 @@
-*{
+* {
     font-family: 'Poppins', sans-serif;
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
-.about{
+
+.about {
     height: 100vh;
     width: 100%;
 }
-.banner{
+
+.banner {
     height: 92.5vh;
     width: 100%;
 }
-.service{
+
+.service {
     height: 140vh;
     width: 100%;
     background-color: #f7f7f9;
 }
-.login{
+
+.login {
     height: auto;
     width: 100%;
     background-color: #ffffff;
 }
-.footer{
+
+.footer {
     height: auto;
     width: 100%;
     color: #fff;
     background-color: #202124;
 }
-.formBx{
+
+.formBx {
     min-width: 60%;
-    }
-    .formBx form{
-        display: flex;
-        flex-direction: column;
-    }
-    input::placeholder{
-        color: #000;
-    }
-    textarea::placeholder{
-        color: #000;
-    }
-    form input,
-    form textarea{
-        margin-bottom: 20px;
-        padding: 12px;
-        font-size: 16px;
-        background: transparent;
-        outline: none;
-        border: 2px solid #000;
-        background:#fff;
-        color: #000;
-        resize: none;
 }
+
+.formBx form {
+    display: flex;
+    /* flex-direction: column; */
+}
+
+input::placeholder {
+    color: #000;
+}
+
+textarea::placeholder {
+    color: #000;
+}
+
+form input,
+form textarea {
+    margin-bottom: 20px;
+    padding: 12px;
+    font-size: 16px;
+    background: transparent;
+    outline: none;
+    border: 2px solid #000;
+    background: #fff;
+    color: #000;
+    resize: none;
+}
+
+/* .formBx form select, .formBx form option{
+    margin: 20px;
+    padding: 12px;
+    font-size: 16px;
+    background: transparent;
+    outline: none;
+    border: 2px solid #000;
+    background: #fff;
+    color: #000;
+    resize: none;
+} */
+
 @media(max-width: 991px) {
-    .service,.about{
+
+    .service,
+    .about {
         height: auto;
     }
-    .footer{
+
+    .footer {
         height: auto;
     }
 }

@@ -1,0 +1,11 @@
+Amount
+Type (Marital,educational,property,vehicle)
+Number of installments
+EMI Amount + 1% per month
+aadhar Number
+{% comment %} photo {% endcomment %}
+Address
+Dob
+
+Sign up - ATM  Pin (mail)
+Cookies
