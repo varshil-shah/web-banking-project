@@ -180,7 +180,7 @@ if (isset($_POST['deposit'])) {
         </script>
         <?php
         $subject = "Deposit Amount State Bank of India";
-        $body = "Amout of rupees " . $amount . " has been added to your account at " . $time . "\n Your bank balance is " . $senderDatabaseAmount . "\nThank you";
+        $body = "Amout of rupees " . $amount . " has been added to your account at " . $time . "\n Your bank balance is " . $updateDepositAmount . "\nThank you";
         $from = "From: jerryshah1004@gmail.com";
 
         $transaction = "Amount of rupees ".$amount." has been added to your account ".$email;

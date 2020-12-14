@@ -17,7 +17,7 @@ html {
 }
 
 .service {
-    height: 140vh;
+    height: 150vh;
     width: 100%;
     background-color: #f7f7f9;
 }
@@ -41,7 +41,7 @@ html {
 
 .formBx form {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
 }
 
 input::placeholder {

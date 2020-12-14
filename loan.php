@@ -10,11 +10,9 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <title>State Bank Of India</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <title>Loan Application</title>
 
     <style>
         select,
@@ -31,12 +29,12 @@
         }
     </style>
 </head>
+4
 
 <body>
     <section class="registration">
         <div class="container-fluid">
-            <h2 class="text-center font-weight-bold py-5"><span class="text-danger">Sign</span><span
-                    class="text-warning"> Up</span></h2>
+            <h2 class="text-center font-weight-bold py-5"><span class="text-danger">Sign</span><span class="text-warning"> Up</span></h2>
         </div>
 
         <div class="container-fluid">
@@ -54,14 +52,13 @@
                                     <option value="Educational">Educational</option>
                                     <option value="Vehicle">Vehicle</option>
                                     <option value="Marraige">Marriage</option>
-                                </optgroup>]
+                                </optgroup>
                             </select>
-                            <input type="number" name="loanamount" id="loanamount" placeholder="Enter your loan amount" required
-                            class="w-100">
-                            
+                            <input type="number" onchange="calculateEmi()" name="loanamount" id="loanamount" placeholder="Enter your loan amount" required class="w-100">
+
                             <div class="row">
                                 <div class="col-lg-6 col-12">
-                                    <select name="installments" id="installments" class="w-100">
+                                    <select name="installments" onchange="calculateEmi()" id="installments" class="w-100">
                                         <optgroup>
                                             <option value="none">-Select Number of Installments-</option>
                                             <option value="3">3</option>
@@ -72,17 +69,15 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-6 col-12">
-                                    <input type="text" name="emi" id="emi" readonly class="w-100">
+                                    <input type="text" name="emi" id="emi" value="0" readonly class="w-100">
                                 </div>
                             </div>
 
                             <input type="date" name="dob" required class="w-100">
-                            
-                            <input type="text" name="aadhar" placeholder="Enter your Aadhar Number" required
-                                class="w-100">
 
-                            <input type="text" name="account" placeholder="Account number Ex. => A101,A102" required
-                                class="w-100">
+                            <input type="text" name="aadhar" placeholder="Enter your Aadhar Number" required class="w-100">
+
+                            <input type="text" name="account" placeholder="Account number Ex. => A101,A102" required class="w-100">
 
                             <div class="col-1">
                                 <button class="btn btn-primary my-3" name="loan" type="submit">Submit</button>
@@ -96,9 +91,12 @@
     </section>
     <script>
         function calculateEmi() {
-            document.getElementById("emi").value = document.getElementById("loanamount").value / document.getElementById("installments").Selection
+            const principal = document.getElementById("loanamount").value;
+            const period = document.getElementById("installments").value;
+            const emi = (principal * period * 1 / 100) + principal / period;
+            document.getElementById("emi").value = !isNaN(emi) ? emi : 0 // todo
         }
-    0</script>
+    </script>
 </body>
 
 </html>
