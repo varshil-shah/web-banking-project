@@ -13,7 +13,7 @@ include 'links.html';
 <html lang="en">
 
 <head>
-    <title>State Bank Of India | Transfer Money</title>
+    <title>Mumbai Co-operative Bank | Transfer Money</title>
 </head>
 
 <body>
@@ -128,7 +128,7 @@ include 'links.html';
                             </form>
                         </div>
                         <h5 class="text-center font-weight-bold text-white">Designed and Created
-                            by <span class="text-success">Varshil Shah</span></h5>
+                            by <span class="text-success">Varshil Shah & Nishith Savla</span></h5>
                     </div>
                 </div>
             </div>

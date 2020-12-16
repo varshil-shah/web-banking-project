@@ -19,7 +19,7 @@ include 'links.html';
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-<title>State Bank Of India | Deposit and Withdraw</title>
+<title>Mumbai Co-operative Bank | Deposit and Withdraw</title>
 </head>
 <body>
 
@@ -68,7 +68,11 @@ include 'links.html';
                 <div class="col-lg-6 col-md-6 col-12 mx-auto">
                     <div class="formBx">
                         <form action="maindb.php" method="POST">
+                            <h6>Your account balance</h6>
+                            <input required readonly name="balance" type="number" class="w-100" value="<?php echo $_SESSION['senderamount']; ?>">
+                            <h6>Your email address</h6>
                             <input required type="email" readonly value="<?php echo $_SESSION['email']; ?>" name="atmemail" placeholder="Enter your email " class="w-100">
+                            <h6>Your account number</h6>
                             <input required type="text" readonly value="<?php echo $_SESSION['account'];  ?>" name="atmaccount" id="" placeholder="Enter your account number" class="w-100">
                             <input required type="number" name="atmamount" placeholder="Enter your amount" id="">
                             <input required type="password" name="atmpin" placeholder="Enter your atm pin number" class="w-100">
@@ -95,9 +99,12 @@ include 'links.html';
                 <div class="col-lg-6 col-md-6 col-12 mx-auto">
                     <div class="fromBx">
                         <form action="maindb.php" method="POST">
-                            <h5>Your account balance</h3>
+                                <h6>Your account balance</h6>
                                 <input required readonly name="balance" type="number" class="w-100" value="<?php echo $_SESSION['senderamount']; ?>">
+                                <h6>Your email address</h6>
                                 <input required type="email" readonly value="<?php echo $_SESSION['email']; ?>" name="email" id="" class="w-100">
+                                <h6>Your account number</h6>
+                                <input required type="text" readonly value="<?php echo $_SESSION['account'];  ?>" name="atmaccount" id="" placeholder="Enter your account number" class="w-100">
                                 <input required type="number" name="amount" class="w-100" placeholder="Enter the amount">
                                 <div class="col-1">
                                     <button class="btn btn-primary" name="deposit">Deposit</button>
@@ -150,7 +157,7 @@ include 'links.html';
 							</form>
 						</div>
 						<h5 class="text-center font-weight-bold text-white">Designed and Created
-							by <span class="text-success">Varshil Shah</span></h5>
+							by <span class="text-success">Varshil Shah & Nishith Savla</span></h5>
 					</div>
 				</div>
 			</div>

@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet">
 	<meta name="Description" content="Enter your description here" />
@@ -15,14 +16,14 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-	<title>State Bank Of India</title>
+	<title>Mumbai Co-operative Bank</title>
 </head>
 
 <body>
 	<!-- Creating navbar -->
 	<section id="home">
 		<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">State Bank Of India</a>
+			<a class="navbar-brand animate__animated animate__bounceIn animate__repeat-1" href="#">Mumbai Co-operative Bank</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -243,7 +244,7 @@
 							</form>
 						</div>
 						<h5 class="text-center font-weight-bold text-white">Designed and Created
-							by <span class="text-success">Varshil Shah</span></h5>
+							by <span class="text-success">Varshil Shah & Nishith Savla</span></h5>
 					</div>
 				</div>
 			</div>

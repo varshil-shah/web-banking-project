@@ -72,17 +72,20 @@ include 'links.html';
                 <div class="row">
                     <!-- left side navbar -->
                     <div class="col-lg-3 col-md-4 d-md-block">
-                        <div class="card bg-common card-left">
+                        <div class="card bg-common card-left bg-primary">
                             <div class="card-body">
                                 <ul class="nav d-md-block d-none">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#profile"><i class="fa fa-user mr-1"></i> Profile</a>
+                                        <a class="nav-link active text-white" data-toggle="tab" href="#profile"><i class="fa fa-user mr-1"></i> Profile</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a data-toggle="tab" class="nav-link" href="#account"><i class="fa fa-user-cog mr-1"></i> Transactions</a>
+                                        <a data-toggle="tab" class="nav-link text-white" href="#account"><i class="fa fa-user-cog mr-1"></i> Transactions</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#security"><i class="fa fa-user-shield mr-1"></i> Update password</a>
+                                        <a class="nav-link text-white" data-toggle="tab" href="#security"><i class="fa fa-user-shield mr-1"></i> Update password</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" data-toggle="tab" href="#activity"><i class="fa fa-street-view mr-1"></i> Activity</a>
                                     </li>
                                 </ul>
                             </div>
@@ -102,6 +105,9 @@ include 'links.html';
                                     </li>
                                     <li class="nav-item">
                                         <a data-toggle="tab" class="nav-link" href="#security"><i class="fa fa-user-shield mr-1"></i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a data-toggle="tab" class="nav-link" href="#activity"><i class="fa fa-street-view mr-1"></i></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -194,10 +200,12 @@ include 'links.html';
                                                     <form action="profiledb.php" method="POST">
                                                         <label for="">Email address</label>
                                                         <input type="email" readonly value="<?php echo $_SESSION['email']; ?>" name="email" id="">
+                                                        <label for="">Current Password</label>
+                                                        <input type="password" name="currentpassword" placeholder="Current password" id="">
                                                         <label for="">Enter your new password</label>
-                                                        <input type="password" name="mypassword" id="">
+                                                        <input type="password" name="mypassword" placeholder="New password" id="">
                                                         <label for="">Confirm your password</label>
-                                                        <input type="password" name="cpassword">
+                                                        <input type="password" placeholder="Confirm new password" name="cpassword">
                                                         <div class="col-1">
                                                             <button type="submit" name="password" class="btn btn-primary">update</button>
                                                         </div>
@@ -206,6 +214,49 @@ include 'links.html';
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="tab-pane" id="activity">
+                                    <h6>Your all activities</h6>
+                                    <hr>
+
+                                    <table class="table">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Subject</th>
+                                                <th scope="col">Message</th>
+                                                <th scope="col">Date and Time</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Display transaction -->
+                                            <?php
+
+                                            include 'dbcon.php';
+
+                                            $email = $_SESSION['email'];
+                                            $count = 0;
+                                            $select = "select * from activity where email = '$email'";
+                                            $select_query = mysqli_query($con, $select);
+                                            $nums = mysqli_num_rows($select_query);
+
+                                            while ($res = mysqli_fetch_array($select_query)) {
+                                                $count++;
+                                            ?>
+                                                <tr>
+                                                    <th scope="row"><?php echo $count; ?></th>
+                                                    <td><?php echo $res['subject']; ?></td>
+                                                    <td><?php echo $res['message']; ?></td>
+                                                    <td><?php echo $res['time']; ?></td>
+                                                </tr>
+
+                                            <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
@@ -259,7 +310,7 @@ include 'links.html';
                             </form>
                         </div>
                         <h5 class="text-center font-weight-bold text-white">Designed and Created
-                            by <span class="text-success">Varshil Shah</span></h5>
+                            by <span class="text-success">Varshil Shah & Nishith Savla</span></h5>
                     </div>
                 </div>
             </div>

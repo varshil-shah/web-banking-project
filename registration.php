@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <title>State Bank Of India</title>
+    <title>Mumbai Co-operative Bank</title>
 </head>
 <body>
     <section class="registration">
@@ -102,7 +102,7 @@
 							</form>
 						</div>
 						<h5 class="text-center font-weight-bold text-white">Designed and Created
-							by <span class="text-success">Varshil Shah</span></h5>
+							by <span class="text-success">Varshil Shah & Nishith Savla</span></h5>
 					</div>
 				</div>
 			</div>

@@ -33,12 +33,16 @@
                             <div class="col-lg-12 col-12">
                                 <input required type="password" name="loginpassword" placeholder="Enter your password" class="w-100">
                             </div>
-                            <div class="col-1">
-                                <button class="btn btn-primary" name="login" type="submit">Login</button>
+                            <div class="row ml-1">
+                                <div class="col-5">
+                                    <button class="btn btn-primary" name="login" type="submit">Login</button>
+                                </div>
+                                <div class="col-7">
+                                    <a href="registration.php" class="btn btn-primary">Sign up</a>
+                                </div>
                             </div>
                         </div>
-                        <p class="">Already have an account <a href="registration.php">signup</a></p>
-                        <p>Back to index page <a href="index.php">Home</a></p>
+                        <p>Forgotten password <a href="forgot-password.php">Click here</a></p>
                     </form>
                 </div>
             </div>
@@ -84,7 +88,7 @@
                             </form>
                         </div>
                         <h5 class="text-center font-weight-bold text-white">Designed and Created
-                            by <span class="text-success">Varshil Shah</span></h5>
+                            by <span class="text-success">Varshil Shah & Nishith Savla</span></h5>
                     </div>
                 </div>
             </div>
@@ -95,7 +99,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-
         $(document).ready(function() {
             $('#subscribe').click(function(e) {
                 e.preventDefault();

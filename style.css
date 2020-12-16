@@ -65,6 +65,10 @@ form textarea {
     resize: none;
 }
 
+.sticky-top{
+    position: sticky;
+}
+
 /* .formBx form select, .formBx form option{
     margin: 20px;
     padding: 12px;

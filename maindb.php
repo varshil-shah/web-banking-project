@@ -18,76 +18,85 @@ if (isset($_POST['transaction'])) {
     $emailAccountSearchQuery = mysqli_query($con, $emailAccountSearch);
     $emailAccountSearchCount = mysqli_num_rows($emailAccountSearchQuery);
 
-    if ($emailAccountSearchCount) {
-        $dataSearch = mysqli_fetch_assoc($emailAccountSearchQuery);
-        $_SESSION['receiveramount'] = $dataSearch['amount'];    // TODO - remove $_SESSION variable
-        $receiverDatabaseAmount = (int)$_SESSION['receiveramount'];
-        if ($formSenderAmount > 0) {
-            if ($senderDatabaseAmount - $formSenderAmount > 0) {
-                $updatedSenderAmount = $senderDatabaseAmount - $formSenderAmount;
-                $updatedReceiverAmount = $receiverDatabaseAmount + $formSenderAmount;
-                $updateSenderDatabase = "UPDATE registration SET amount = '$updatedSenderAmount' WHERE email = '$formSenderMail' ";
-                $updateReceiverDatabase = "UPDATE registration SET amount = '$updatedReceiverAmount' WHERE email = '$formReceiverMail' ";
+    if ($formSenderMail != $formReceiverMail) {
+        if ($emailAccountSearchCount) {
+            $dataSearch = mysqli_fetch_assoc($emailAccountSearchQuery);
+            $_SESSION['receiveramount'] = $dataSearch['amount'];    // TODO - remove $_SESSION variable
+            $receiverDatabaseAmount = (int)$_SESSION['receiveramount'];
+            if ($formSenderAmount > 0) {
+                if ($senderDatabaseAmount - $formSenderAmount > 0) {
+                    $updatedSenderAmount = $senderDatabaseAmount - $formSenderAmount;
+                    $updatedReceiverAmount = $receiverDatabaseAmount + $formSenderAmount;
+                    $updateSenderDatabase = "UPDATE registration SET amount = '$updatedSenderAmount' WHERE email = '$formSenderMail' ";
+                    $updateReceiverDatabase = "UPDATE registration SET amount = '$updatedReceiverAmount' WHERE email = '$formReceiverMail' ";
 
-                $updateReceiverDatabaseQuery = mysqli_query($con, $updateReceiverDatabase);
-                $updateSenderDatabaseQuery = mysqli_query($con, $updateSenderDatabase);
+                    $updateReceiverDatabaseQuery = mysqli_query($con, $updateReceiverDatabase);
+                    $updateSenderDatabaseQuery = mysqli_query($con, $updateSenderDatabase);
 
-                if ($updateReceiverDatabaseQuery && $updateSenderDatabaseQuery) {
+                    if ($updateReceiverDatabaseQuery && $updateSenderDatabaseQuery) {
 ?>
-                    <script>
-                        alert("Money transfer successful.");
-                    </script>
-                    <?php
-                    $subject = "Money Transaction from State bank of India";
-                    $body = "The amount of rupees " . $formSenderAmount . " has been deducated from your acccount at " . $time . "\nYour total balance is " . $updatedSenderAmount . " \nThank You";
-                    $from = "From: jerryshah1004@gmail.com";
-
-                    $body1 = "The amount of rupees " . $formSenderAmount . " has been added in your acccount at " . $time . "\nYour total balance is " . $updatedReceiverAmount . "  Thank You";
-                    $method = "Transaction";
-
-                    $transaction = "Amount of rupees ".$formSenderAmount." has been deducated from ".$formSenderMail. " and added to ".$formReceiverMail." ";
-                    $transactionAction = "INSERT INTO transaction(senderemail,receiveremail,method,transaction,date) VALUES('$formSenderMail','$formReceiverMail','$method','$transaction','$time') ";
-                    $transactionQuery = mysqli_query($con,$transactionAction);
-                    if (mail($formSenderMail, $subject, $body, $from) && mail($formReceiverMail, $subject, $body1, $from) && $transactionQuery) {
-                    ?>
                         <script>
-                            alert('Please sender and receiver check your inbox');
-                            location.replace('index.php');
+                            alert("Money transfer successful.");
                         </script>
-                    <?php
+                        <?php
+                        $subject = "Money Transaction from State bank of India";
+                        $body = "The amount of rupees " . $formSenderAmount . " has been deducated from your acccount at " . $time . "\nYour total balance is " . $updatedSenderAmount . " \nThank You";
+                        $from = "From: jerryshah1004@gmail.com";
+
+                        $body1 = "The amount of rupees " . $formSenderAmount . " has been added in your acccount at " . $time . "\nYour total balance is " . $updatedReceiverAmount . "  Thank You";
+                        $method = "Transaction";
+
+                        $transaction = "Amount of rupees " . $formSenderAmount . " has been deducated from " . $formSenderMail . " and added to " . $formReceiverMail . " ";
+                        $transactionAction = "INSERT INTO transaction(senderemail,receiveremail,method,transaction,date) VALUES('$formSenderMail','$formReceiverMail','$method','$transaction','$time') ";
+                        $transactionQuery = mysqli_query($con, $transactionAction);
+                        if (mail($formSenderMail, $subject, $body, $from) && mail($formReceiverMail, $subject, $body1, $from) && $transactionQuery) {
+                        ?>
+                            <script>
+                                alert('Please sender and receiver check your inbox');
+                                location.replace('index.php');
+                            </script>
+                        <?php
+                        } else {
+                        ?>
+                            <script>
+                                alert('mail not send');
+                            </script>
+                        <?php
+                        }
                     } else {
-                    ?>
+                        ?>
                         <script>
-                            alert('mail not send');
+                            alert("Failed to transfer money");
                         </script>
                     <?php
                     }
                 } else {
                     ?>
                     <script>
-                        alert("Failed to transfer money");
+                        alert("Sender don't have that much bank balance");
                     </script>
                 <?php
                 }
             } else {
                 ?>
                 <script>
-                    alert("Sender don't have that much bank balance");
+                    alert('Sender amount input is not valid');
                 </script>
             <?php
             }
         } else {
             ?>
             <script>
-                alert('Sender amount input is not valid');
+                alert('Email or Account are invalid');
             </script>
-        <?php
+            <?php
         }
-    } else {
+    }else{
         ?>
-        <script>
-            alert('Email or Account are invalid');
-        </script>
+            <script>
+                alert('You cannot send money to your same account');
+                location.reload('main.php');
+            </script>
         <?php
     }
 }
@@ -111,31 +120,32 @@ if (isset($_POST['atm'])) {
                 $updateAtm = "UPDATE registration SET amount = '$updatedAtmAmount' WHERE email = '$atmemail' ";
                 $updateAtmQuery = mysqli_query($con, $updateAtm);
                 if ($updateAtmQuery) {
-        ?>
+            ?>
                     <script>
                         alert('Please collect your amount');
                     </script>
                     <?php
-                    $subject = "ATM transaction from State Bank Of India";
+                    $subject = "ATM transaction from Mumbai Co-operative Bank";
                     $body = "Amount of rupees " . $atmamount . " has been deducated from your account on " . $time . "\nYour total amount is " . $updatedAtmAmount . "\nThank you";
                     $from = "From: jerryshah1004@gmail.com";
 
-                    $transaction = "Amount of rupees ".$atmamount." has been deducated from ".$atmemail;
+                    $transaction = "Amount of rupees " . $atmamount . " has been deducated from " . $atmemail;
                     $method = "ATM";
-                    $transactionAction = "INSERT INTO transaction(senderemail,receiveremail,method,transaction,date) VALUES('$atmemail','$notProvided','$method','$transaction','$time')"; 
-                    $transactionQuery = mysqli_query($con,$transactionAction);
+                    $transactionAction = "INSERT INTO transaction(senderemail,receiveremail,method,transaction,date) VALUES('$atmemail','$notProvided','$method','$transaction','$time')";
+                    $transactionQuery = mysqli_query($con, $transactionAction);
 
                     if (mail($atmemail, $subject, $body, $from) && $transactionQuery) {
                     ?>
                         <script>
                             alert('Please check your email');
-                            location.replace('index.php');
+                            location.replace('deposit-withdraw.php');
                         </script>
                     <?php
                     } else {
                     ?>
                         <script>
                             alert('Email not send');
+                            location.replace('deposit-withdraw.php');
                         </script>
                 <?php
                     }
@@ -144,6 +154,7 @@ if (isset($_POST['atm'])) {
                 ?>
                 <script>
                     alert("You don't have that much balance in your account");
+                    location.replace('deposit-withdraw.php');
                 </script>
             <?php
             }
@@ -151,6 +162,7 @@ if (isset($_POST['atm'])) {
             ?>
             <script>
                 alert('Please enter the valid amount');
+                location.replace('deposit-withdraw.php');
             </script>
         <?php
         }
@@ -158,6 +170,7 @@ if (isset($_POST['atm'])) {
         ?>
         <script>
             alert('Invalid pin');
+            location.replace('deposit-withdraw.php');
         </script>
     <?php
     }
@@ -176,29 +189,29 @@ if (isset($_POST['deposit'])) {
     if ($updateDepositQuery) {
     ?>
         <script>
-            alert('Amount deposited successful')
+            alert('Amount deposited successful');
         </script>
         <?php
-        $subject = "Deposit Amount State Bank of India";
+        $subject = "Deposit Amount Mumbai Co-operative Bank";
         $body = "Amout of rupees " . $amount . " has been added to your account at " . $time . "\n Your bank balance is " . $updateDepositAmount . "\nThank you";
         $from = "From: jerryshah1004@gmail.com";
 
-        $transaction = "Amount of rupees ".$amount." has been added to your account ".$email;
+        $transaction = "Amount of rupees " . $amount . " has been added to your account " . $email;
         $method = "Deposit";
         $transactionAction = "INSERT INTO transaction(senderemail,receiveremail,method,transaction,date) VALUES('$email','$notProvided','$method','$transaction','$time')";
-        $transactionQuery = mysqli_query($con,$transactionAction);
+        $transactionQuery = mysqli_query($con, $transactionAction);
         if (mail($email, $subject, $body, $from) && $transactionQuery) {
         ?>
             <script>
                 alert('Please check your inbox');
-                location.replace('index.php');
+                location.replace('deposit-withdraw.php');
             </script>
         <?php
         } else {
         ?>
             <script>
                 alert('mail not send');
-                location.replace('index.php');
+                location.replace('deposit-withdraw.php');
             </script>
         <?php
         }
@@ -206,7 +219,7 @@ if (isset($_POST['deposit'])) {
         ?>
         <script>
             alert('deposit something went wrong');
-            location.replace('index.php');
+            location.replace('deposit-withdraw.php');
         </script>
 <?php
     }
