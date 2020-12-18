@@ -59,20 +59,3 @@ function calculateEmi($p, $n, $r = 1)
 }
 
 ?>
-
-<!-- function payEmi($account,$con) { // TODO add variable from $session
-        $select_emi = "SELECT emi,loanamount,amount FROM registration WHERE account = '$account'";
-        $select_emi_query = mysqli_query($con,$select_emi);
-        $result = mysqli_fetch_assoc($select_emi_query);
-        $emi = $result["emi"];
-        $loanamount = $result["loanamount"];
-        $amount = $result["amount"];
-        $emi = (int)($emi);
-        $loanamount = (int)($loanamount) - $emi;
-        $amount = (int)($amount) - $emi;
-        var_dump($loanamount)."<br>";
-        var_dump($amount)."<br>";
-        $deduct_emi = "UPDATE registration SET loanamount = $loanamount, amount = $amount WHERE account = '$account'";
-        $deduct_emi_query = mysqli_query($con, $deduct_emi);
-        var_dump($deduct_emi_query);
-    }  -->

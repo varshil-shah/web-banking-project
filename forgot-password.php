@@ -8,41 +8,27 @@
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="style.css">
-    <title>Login Page</title>
+    <title>Forgot Password</title>
 </head>
 
 <body>
-
-    <div class="container-fluid">
-        <h2 class="text-center font-weight-bold py-5">Login Page</h2>
-    </div>
-
     <div class="container">
+        <h1 class="text-center font-weight-bold py-5 mx-auto text-danger"><span class="text-warning">Forgot</span> Password</h1>
+
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
-                <img src="images/signup.png" class="img-fluid" alt="">
+                <img src="images/forgot-password.png" class="img-fluid" alt="">
             </div>
             <div class="col-lg-6 col-md-6 col-12">
-                <div class="formBx">
-                    <form action="logindb.php" method="POST">
-                        <div class="row py-5">
-                            <div class="col-lg-12 col-12">
-                                <input required type="email" name="loginemail" placeholder="Enter your email address" class="w-100" id="">
-                            </div>
-                            <div class="col-lg-12 col-12">
-                                <input required type="password" name="loginpassword" placeholder="Enter your password" class="w-100">
-                            </div>
-                            <div class="row ml-1">
-                                <div class="col-5">
-                                    <button class="btn btn-primary" name="login" type="submit">Login</button>
-                                </div>
-                                <div class="col-7">
-                                    <a href="registration.php" class="btn btn-primary">Sign up</a>
-                                </div>
-                            </div>
+                <div class="formBx mt-5">
+                    <form action="forgot-passdb.php" method="POST">
+                        <label for="">Enter your email address </label>
+                        <input type="email" name="email" placeholder="Enter your email address" id="">
+                        <div class="col-5">
+                            <button class="btn btn-primary" type="submit" name="forgot">Send mail</button>
                         </div>
-                        <p>Forgotten password <a href="forgot-password.php">Click here</a></p>
                     </form>
                 </div>
             </div>
@@ -93,41 +79,10 @@
 				</div>
 			</div>
     </section>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#subscribe').click(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    method: "post",
-                    url: "subscribe.php",
-                    data: $('#subscribeForm')
-                        .serialize(),
-                    dataType: "text",
-                    success: function(response) {
-                        $('#result')
-                            .fadeIn()
-                            .text(
-                                response
-                            );
-                        setTimeout(function() {
-                                $('#result')
-                                    .fadeOut(
-                                        'slow'
-                                    );
-                            },
-                            3000
-                        );
-                    }
-                })
-            })
-        });
-    </script>
-
 </body>
 
 </html>

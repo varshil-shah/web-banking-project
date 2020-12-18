@@ -52,8 +52,8 @@
                                 </div>
                             </div>
                             <button class="btn btn-primary my-3" name="submit" type="submit">Submit</button>
+                            <a href="login.php" class="btn btn-primary my-3">Login</a>
                         </form>
-                        <p>Already have an account <a href="login.php">Login</a></p>
                         <p>Back to index page <a href="index.php">Home</a></p>
                     </div>
                 </div>
@@ -101,12 +101,12 @@
 								</div>
 							</form>
 						</div>
-						<h5 class="text-center font-weight-bold text-white">Designed and Created
-							by <span class="text-success">Varshil Shah & Nishith Savla</span></h5>
+						<h6 class="text-center font-weight-bold text-white">Designed and Created
+							by <span class="text-success">Varshil Shah & Nishith Savla</span></h6>
 					</div>
 				</div>
 			</div>
-	</section>
+    </section>
 
 </body>
 </html>

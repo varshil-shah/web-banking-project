@@ -24,7 +24,7 @@ if (isset($_GET['token'])) {
         <script>
             alert('Accout updated successfully');
             alert('Please login to continue');
-            //location.replace('index.php');
+            location.replace('login.php');
         </script>
     <?php
     } else {

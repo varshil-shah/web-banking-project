@@ -51,6 +51,7 @@ if (isset($_POST['submit'])) {
         ?>
                     <script>
                         alert('Please click the link provided to your mail address to verify your account');
+                        location.replace('index.php');
                     </script>
                 <?php
                 } else {

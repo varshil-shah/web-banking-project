@@ -156,8 +156,8 @@ include 'links.html';
 								</div>
 							</form>
 						</div>
-						<h5 class="text-center font-weight-bold text-white">Designed and Created
-							by <span class="text-success">Varshil Shah & Nishith Savla</span></h5>
+						<h6 class="text-center font-weight-bold text-white">Designed and Created
+							by <span class="text-success">Varshil Shah & Nishith Savla</span></h6>
 					</div>
 				</div>
 			</div>
